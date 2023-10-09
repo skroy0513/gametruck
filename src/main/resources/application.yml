@@ -23,6 +23,6 @@ spring:
   # ??? ? ??
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:oracle:thin:@localhost:1521:xe
-    username: hr
-    password: zxcv1234
+    url: jdbc:mysql://gametruck.c42t75itgfqt.ap-northeast-2.rds.amazonaws.com:3306/gametruck?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: gametruck
+    password: 'tyuiop13!!'
