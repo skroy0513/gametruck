@@ -7,12 +7,12 @@ logging:
       springboot:
         security: info
         info: info
-    '[com.gemeshop.mapper]': trace
+    '[com.gemetruck.mapper]': trace
 
 mybatis:
   mapper-locations:
     - mybatis/mapper/*.xml
-  type-aliases-package: com.gameshop.vo
+  type-aliases-package: com.gametruck.vo
   configuration:
     call-setters-on-nulls: true
     map-underscore-to-camel-case: true
