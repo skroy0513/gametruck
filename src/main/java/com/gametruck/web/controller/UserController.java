@@ -13,11 +13,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
     @PostMapping("/signup")
     public String singup(SignupForm signupForm) {
         userService.signup(signupForm);
