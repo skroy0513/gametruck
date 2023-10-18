@@ -10,4 +10,6 @@ public interface UserMapper {
     void createUser(User user);
 
     User getUserById(String username);
+
+    User getUserByEmail(String email);
 }

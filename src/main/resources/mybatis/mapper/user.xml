@@ -4,9 +4,9 @@
 
     <insert id="createUser" parameterType="com.gametruck.vo.User">
         insert into user
-        (user_id, user_encrypted_password, user_email, user_provider_type)
+        (user_id, user_encrypted_password, user_email, user_name, user_provider_type)
         values
-        (#{id}, #{password}, #{email}, #{providerType})
+        (#{id}, #{password}, #{email}, #{name}, #{providerType})
     </insert>
 
     <select id="getUserById" parameterType="string" resultType="com.gametruck.vo.User">
@@ -29,5 +29,27 @@
             user_disabled = 0
         and
             user_id = #{value}
+    </select>
+
+    <select id="getUserByEmail" parameterType="string" resultType="com.gametruck.vo.User">
+        select
+            user_id as id,
+            user_encrypted_password as password,
+            user_email as eamil,
+            user_name as name,
+            user_provider_type as providerType,
+            user_tel as tel,
+            user_address_postcode as addressPostcode,
+            user_address as address,
+            user_address_detail as addressDetail,
+            user_disabled as disabled,
+            user_role as rolename,
+            user_created_date as createdDate,
+            user_updated_date as updatedDate
+        from user
+        where
+            user_disabled = 0
+          and
+            user_email = #{value}
     </select>
 </mapper>
