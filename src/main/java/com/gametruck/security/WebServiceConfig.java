@@ -1,5 +1,6 @@
 package com.gametruck.security;
 
+import com.gametruck.security.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @RequiredArgsConstructor
 public class WebServiceConfig {
+
+    private final CustomOAuth2UserService customOauth2UserService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -32,6 +35,11 @@ public class WebServiceConfig {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true))
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login")
+                        .failureUrl("/login?error=fail")
+                        .userInfoEndpoint()
+                        .userService(customOauth2UserService))
                 .exceptionHandling()
                 .authenticationEntryPoint((request, response, authException) -> response.sendRedirect("/login?error=noauth"))
                 .accessDeniedHandler((request, response, accessDeniedException) -> response.sendRedirect("/login?error=denied"));
