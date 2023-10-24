@@ -14,6 +14,8 @@ public class LoginUser {
     private String name;
     private String rolename;
 
+    public LoginUser() {}
+
     public LoginUser(User user){
         super();
         this.id = user.getId();

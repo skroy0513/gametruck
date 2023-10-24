@@ -50,10 +50,10 @@ public class FileService {
 
         } catch (AmazonServiceException e) {
             // 요청은 성공했지만 s3가 처리하지 못함
-            e.printStackTrace();
+            log.error("Error 발생", e);
         } catch (SdkClientException e) {
             // s3에 응답을 달라고 연결할 수 없거나, 클라이언트가 s3의 응답 구문을 분석하지 못
-            e.printStackTrace();
+            log.error("Error 발생", e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
