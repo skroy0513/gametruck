@@ -15,92 +15,73 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Form Elements</h3>
-                </div>
-
-                <div class="title_right">
-                    <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-										<button class="btn btn-default" type="button">Go!</button>
-									</span>
-                        </div>
-                    </div>
+                    <h3>상품 등록하기</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Form Design <small>different form elements</small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a class="dropdown-item" href="#">Settings 1</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
                         <div class="x_content">
                             <br />
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="cat-no">카테고리<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-2 col-sm-2">
+                                        <select type="text" id="cat-no" name="cat-no" required="required" class="form-control ">
+                                            <option value="101">액션</option>
+                                            <option value="101">액션</option>
+                                            <option value="101">액션</option>
+                                            <option value="101">액션</option>
+                                        </select>
+                                    </div>
+                                    <label class="col-form-label col-md-1 col-sm-1 label-align" for="platform-no">플랫폼<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-3 col-sm-3">
+                                        <select type="text" id="platform-no" name="platform-no" required="required" class="form-control">
+                                            <option value="10">플레이스테이션</option>
+                                            <option value="10">플레이스테이션</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">상품명<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="first-name" required="required" class="form-control ">
+                                        <input type="text" id="name" name="name" required="required" class="form-control required">
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="price">가격<span class="required">*</span></label>
+                                    <div class="col-md-2 col-sm-2">
+                                        <input id="price" class="form-control required" type="number" name="price" min="0" step="100" required>
+                                    </div>
+                                    <p style="font-size: 20px; padding-top: 7px;">원</p>
+                                    <label for="discount" class="col-form-label col-md-1 col-sm-1 label-align">할인율</label>
+                                    <div class="col-md-2 col-sm-2" style="display: flex; gap: 2%;">
+                                        <input id="discount" class="form-control" type="text" name="discount" value="0">
+                                        <p style="font-size: 25px;">%</p>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label for="stock" class="col-form-label col-md-3 col-sm-3 label-align">재고</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="stock" class="form-control" name="stock" type="range" step="10" value="1" min="0" max="300"  oninput="document.getElementById('value').innerHTML=this.value;">
+                                        <p><span id="value">0</span> 개</p>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label for="cover" class="col-form-label col-md-3 col-sm-3 label-align">커버이미지</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="cover" type="file" name="cover">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="description">상품설명<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="last-name" name="last-name" required="required" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input id="middle-name" class="form-control" type="text" name="middle-name">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <div id="gender" class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                <input type="radio" name="gender" value="male" class="join-btn"> &nbsp; Male &nbsp;
-                                            </label>
-                                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                <input type="radio" name="gender" value="female" class="join-btn"> Female
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Date Of Birth <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input id="birthday" class="date-picker form-control" placeholder="dd-mm-yyyy" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                                        <script>
-                                            function timeFunctionLong(input) {
-                                                setTimeout(function() {
-                                                    input.type = 'text';
-                                                }, 60000);
-                                            }
-                                        </script>
+                                        <textarea name="description" id="description" cols="70" rows="10" style="width: auto;" required></textarea>
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
@@ -111,7 +92,6 @@
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
