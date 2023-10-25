@@ -57,6 +57,6 @@ public class FileService {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        return amazonS3.getUrl(bucketName, name).toString();
+        return name;
     }
 }

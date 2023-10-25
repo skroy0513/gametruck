@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gametruck.mapper.ProductMapper">
+    <insert id="registerProduct" parameterType="com.gametruck.vo.Product">
+        insert into product
+        (cat_no, product_name, platform_no, product_description, product_price, product_discount_rate, product_stock, product_cover)
+        values
+        (#{category.no}, #{name}, #{platform.no}, #{description}, #{price}, #{discountRate}, #{stock}, #{cover})
+    </insert>
+
+</mapper>
