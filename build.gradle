@@ -32,6 +32,8 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+	compileOnly 'com.aventrix.jnanoid:jnanoid:2.0.0'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'

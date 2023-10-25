@@ -1,0 +1,196 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin-base}">
+<head>
+    <!-- bootstrap-wysiwyg -->
+    <link href="/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="/vendors/starrr/dist/starrr.css" rel="stylesheet">
+</head>
+<div layout:fragment="content">
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>상품 등록하기</h3>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 ">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <br />
+                            <form method="post" th:action="@{/admin/register}" id="product-form" data-parsley-validate class="form-horizontal form-label-left product-form">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="cat-no">카테고리<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-2 col-sm-2">
+                                        <select type="text" id="cat-no" name="catNo" required="required" class="form-control">
+                                            <option disabled selected>카테고리를 선택하세요</option>
+                                            <th:block th:each="cat : ${cat}">
+                                                <option th:value="${cat.no}" th:text="${cat.name}"></option>
+                                            </th:block>
+                                        </select>
+                                    </div>
+                                    <label class="col-form-label col-md-1 col-sm-1 label-align" for="platform-no">플랫폼<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-3 col-sm-3">
+                                        <select type="text" id="platform-no" name="platformNo" required="required" class="form-control">
+                                            <option disabled selected >플랫폼을 선택하세요</option>
+                                            <th:block th:each="plat : ${plat}">
+                                                <option th:value="${plat.no}" th:text="${plat.name}"></option>
+                                            </th:block>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">상품명<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="name" name="name" required="required" class="form-control required">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="price">가격<span class="required">*</span></label>
+                                    <div class="col-md-2 col-sm-2">
+                                        <input id="price" class="form-control required" type="number" name="price" min="0" step="100" required>
+                                    </div>
+                                    <p style="font-size: 20px; padding-top: 7px;">원</p>
+                                    <label for="discountRate" class="col-form-label col-md-1 col-sm-1 label-align">할인율</label>
+                                    <div class="col-md-2 col-sm-2" style="display: flex; gap: 2%;">
+                                        <input id="discountRate" class="form-control" type="number" name="discountRate" value="0">
+                                        <p style="font-size: 25px;">%</p>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label for="stock" class="col-form-label col-md-3 col-sm-3 label-align">재고</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="stock" class="form-control" name="stock" type="range" step="10" value="1" min="0" max="300"  oninput="document.getElementById('value').innerHTML=this.value;">
+                                        <p><span id="value">0</span> 개</p>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="description">상품설명<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <textarea name="description" id="description" cols="70" rows="10" style="width: auto;" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">커버이미지</label>
+                                    <div class="col-md-3 col-sm-3">
+                                        <input id="cover" type="file" class="image-input">
+                                        <div class="image-container">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                        <button class="btn btn-primary" type="button">Cancel</button>
+                                        <button class="btn btn-primary" type="reset">Reset</button>
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block layout:fragment="script">
+    <script>
+
+    </script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="/vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="/vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="/vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="/vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="/vendors/starrr/dist/starrr.js"></script>
+    <script>
+        let $imageInput = $(".image-input");
+        let $imageContainer = $(".image-container");
+        let $productForm = $(".product-form");
+
+        function addAndDisplayImage(file, savedName) {
+            let newHTML = `
+				<div class="image-item" style="width: 200px; height: 200px;">
+					<img src="${URL.createObjectURL(file)}" alt="" style="object-fit: contain; width: 100%; height: 100%;">
+				</div>`;
+
+            $imageContainer.empty();
+            $imageContainer.append(newHTML);
+
+            $("<input>").attr({
+                type: "hidden",
+                name: "cover",
+            }).val(savedName).appendTo($productForm);
+
+            console.log("이미지 업로드 성공");
+        }
+
+        async function uploadImageAndGetSavedName(file) {
+            let formdata = new FormData();
+            formdata.append("file", file);
+
+            return new Promise(function(resolve, reject) {
+                $.ajax({
+                    url: "/upload",
+                    type: 'POST',
+                    data: formdata,
+                    processData: false,
+                    contentType: false
+                }).done(function(response) {
+                    console.log("업로드된 파일명 불러오기")
+                    resolve(response.toString());
+                }).fail(function() {
+                    reject();
+                });
+            });
+        }
+
+        $imageInput.on("change", async function(e) {
+            console.log("click")
+            let files = Array.from(e.target.files)
+            console.log(files);
+            if (files && files.length > 0){
+                for (let i = 0; i < files.length; i++){
+                    let file = files[i];
+                    if (file.size >= 30*1024*1024) {
+                        alert("파일 크기는 30MB를 초과할 수 없습니다.");
+                        return;
+                    }
+                    try {
+                        uploadImageAndGetSavedName(file).then(result => {
+                            console.log("파일명");
+                            console.log(result);
+                            addAndDisplayImage(file, result);
+                        });
+                    } catch (e) {
+                        console.log("이미지 업로드 실패");
+                    }
+                }
+            }
+        })
+    </script>
+</th:block>
+</html>
